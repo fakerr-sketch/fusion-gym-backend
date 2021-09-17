@@ -1,0 +1,11 @@
+{
+	"name": "felipe",
+	"email": "felipe@gmail.com",
+	"password": "sdajhkjdkhjkDHkdhJKDH",
+	"type": "aluno",
+	"trainning": {
+		"A": ["Voador", "Remada baixa", "Remada Direta"],
+		"B": ["Rosca Halteres", "Rosca Scott"],
+		"C": ["Agachamento"]
+	}
+}
