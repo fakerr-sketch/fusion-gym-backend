@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "name": "Felipe",
+      "email": "f@gmail.com",
+      "hash": "$2a$12$pxJyRn5F7cNOptivGTo5X.UxLPbkHugn0GuuyuphytIdKL2qUyfQq",
+      "type": "aluno"
+    }
+  ]
+}
