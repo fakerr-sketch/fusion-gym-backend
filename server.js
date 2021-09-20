@@ -1,7 +1,6 @@
 "use-strict"
 
 import fastify from 'fastify'
-import {join} from 'path'
 import { Low, JSONFile } from 'lowdb'
 
 const jsonData = new JSONFile("./data.json")
@@ -51,4 +50,4 @@ ft.route({
 	}
 })
 
-ft.listen(3000)
+ft.listen(3000 || process.env.PORT)
