@@ -52,4 +52,4 @@ ft.route({
 	}
 })
 
-ft.listen(3000, "0.0.0.0")
+ft.listen(3000)
