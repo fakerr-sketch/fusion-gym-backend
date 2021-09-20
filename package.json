@@ -11,6 +11,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "fastify": "^3.21.0",
     "fastify-bcrypt": "^0.1.1",
     "fastify-compress": "^3.6.0",

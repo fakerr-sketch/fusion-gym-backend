@@ -2,6 +2,9 @@
 
 import fastify from 'fastify'
 import { Low, JSONFile } from 'lowdb'
+import {config} from 'dotenv'
+
+config()
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
