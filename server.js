@@ -2,15 +2,15 @@
 
 import fastify from 'fastify'
 import { Low, JSONFile } from 'lowdb'
-import dotenv from 'dotenv'
+import {config} from 'dotenv'
 
-dotenv.config()
+config()
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
 const ft = fastify()
 
-db.read()
+await db.read()
 db.data = db.data || { users: [] }
 
 ft.register(await import("fastify-cookie"))
