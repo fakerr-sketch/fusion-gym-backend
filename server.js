@@ -3,7 +3,6 @@
 import fastify from 'fastify'
 import {join} from 'path'
 import { Low, JSONFile } from 'lowdb'
-import lodash from 'lodash'
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
