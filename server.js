@@ -26,7 +26,7 @@ ft.route({
 
 		if (typeof request.body !== "null") {
 			const {name, email, password} = request.body,
-			hash = await ft.bcrypt.hash(password), 0
+			hash = await ft.bcrypt.hash(password)
 			
 			users.push({name, email, hash, type: "aluno"})
 			await db.write()
