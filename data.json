@@ -5,6 +5,12 @@
       "email": "f@gmail.com",
       "hash": "$2a$12$pxJyRn5F7cNOptivGTo5X.UxLPbkHugn0GuuyuphytIdKL2qUyfQq",
       "type": "aluno"
+    },
+    {
+      "name": "Maria",
+      "email": "m@gmail.com",
+      "hash": "$2a$12$QepQLYXOhLwKzXI9enz1B.oShO4DbJ9whXoUaPXZrZLFQZTIKe7BG",
+      "type": "aluno"
     }
   ]
 }

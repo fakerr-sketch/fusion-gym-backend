@@ -2,16 +2,14 @@
 
 import fastify from 'fastify'
 import { Low, JSONFile } from 'lowdb'
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
-	const ft = fastify(logger: true)
+const ft = fastify()
 
 await db.read()
 db.data = db.data || { users: [] }
+const {data: {users}} = db
 
 ft.register(await import("fastify-cookie"))
 ft.register(await import("fastify-csrf"))
@@ -25,8 +23,9 @@ ft.route({
 	onRequest: ft.csrfProtection,
 	handler: async (request, reply) => {
 		const {body: {name, email, password}} = request,
-		hash = await ft.bcrypt.hash(password)
-		db.data.users.push({name, email, hash, type: "aluno"})
+		hash = await ft.bcrypt.hash(password),
+		data = {name, email, hash, type: "aluno"}
+	    users.push(data)
         await db.write()
 		return reply.code(200)
 	}
@@ -36,9 +35,10 @@ ft.route({
 	method: "POST",
 	url: "/login",
 	onRequest: ft.csrfProtection,
-	handler: async (request, reply) => { 
-        const finalUser = db.data.users.find( el => el.email === request.body.email  )
-        const isHashed = await ft.bcrypt.compare(request.body.password, finalUser.hash)
+	handler: async (request, reply) => {
+		const {body: {email, password}} = request
+		const finalUser = users.find(el => el.email === email)
+        const isHashed = await ft.bcrypt.compare(password, finalUser.hash)
           
         isHashed && reply.code(200).compress(finalUser)
 	}
@@ -53,4 +53,4 @@ ft.route({
 	}
 })
 
-ft.listen(process.env.PORT || 3000, "0.0.0.0")
+ft.listen(process.env.PORT, "0.0.0.0")

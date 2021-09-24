@@ -11,13 +11,13 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "dotenv": "^10.0.0",
     "fastify": "^3.21.0",
     "fastify-bcrypt": "^0.1.1",
     "fastify-compress": "^3.6.0",
     "fastify-cookie": "^5.3.1",
     "fastify-csrf": "^3.1.0",
     "fastify-jwt": "^3.0.1",
-    "lowdb": "^3.0.0"
+    "lowdb": "^3.0.0",
+    "redis": "^3.1.2"
   }
 }
