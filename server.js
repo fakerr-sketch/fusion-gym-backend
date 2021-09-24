@@ -8,9 +8,9 @@ dotenv.config()
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
-const ft = fastify()
+	const ft = fastify(logger: true)
 
-db.read()
+await db.read()
 db.data = db.data || { users: [] }
 
 ft.register(await import("fastify-cookie"))
@@ -53,4 +53,4 @@ ft.route({
 	}
 })
 
-ft.listen(process.env.PORT || 3000)
+ft.listen(process.env.PORT || 3000, "0.0.0.0")
