@@ -10,7 +10,7 @@ const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
 const ft = fastify()
 
-await db.read()
+db.read()
 db.data = db.data || { users: [] }
 
 ft.register(await import("fastify-cookie"))
