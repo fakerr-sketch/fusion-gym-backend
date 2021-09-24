@@ -53,4 +53,4 @@ ft.route({
 	}
 })
 
-ft.listen(process.env.PORT || 3000)
+ft.listen(process.env.PORT, "0.0.0.0")
