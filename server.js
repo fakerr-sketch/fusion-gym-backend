@@ -61,4 +61,4 @@ ft.route({
 	handler: (request, reply) => reply.code(200).compress(users)
 })
 
-ft.listen(3000, "0.0.0.0")
+ft.listen(process.env.PORT, "0.0.0.0")
