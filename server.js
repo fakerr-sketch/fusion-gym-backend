@@ -8,7 +8,7 @@ dotenv.config()
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
-const ft = fastify()
+const ft = fastify({ logger: true })
 
 db.read()
 db.data = db.data || { users: [] }
