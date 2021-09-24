@@ -11,6 +11,12 @@
       "email": "m@gmail.com",
       "hash": "$2a$12$QepQLYXOhLwKzXI9enz1B.oShO4DbJ9whXoUaPXZrZLFQZTIKe7BG",
       "type": "aluno"
+    },
+    {
+      "name": "Walter",
+      "email": "w@gmail.com",
+      "hash": "$2a$12$1SXZ.AEpfyGXI9Dso7h77O6ew4ucMCHChnIE9uqsrcpmFEYMBioBi",
+      "type": "aluno"
     }
   ]
 }

@@ -1,7 +1,7 @@
 "use-strict"
 
 import fastify from 'fastify'
-import { Low, JSONFile } from 'lowdb'
+import { Low, JSONFile } from 'lowdb' 
 
 const jsonData = new JSONFile("./data.json")
 const db = new Low(jsonData)
@@ -21,13 +21,22 @@ ft.route({
 	method: "POST",
 	url: "/signin",
 	onRequest: ft.csrfProtection,
+	onError: error => console.error(error),
 	handler: async (request, reply) => {
-		const {body: {name, email, password}} = request,
-		hash = await ft.bcrypt.hash(password),
-		data = {name, email, hash, type: "aluno"}
-	    users.push(data)
-        await db.write()
-		return reply.code(200)
+
+		if (typeof request.body !== "null") {
+			const {name, email, password} = request.body,
+			hash = await ft.bcrypt.hash(password), 0
+			
+			users.push({name, email, hash, type: "aluno"})
+			await db.write()
+			return reply.code(200)
+		}
+
+	},
+	errorHandler: (err, request, reply) => {
+		console.error(err)
+		return reply.code(500)
 	}
 })
 
@@ -38,19 +47,18 @@ ft.route({
 	handler: async (request, reply) => {
 		const {body: {email, password}} = request
 		const finalUser = users.find(el => el.email === email)
-        const isHashed = await ft.bcrypt.compare(password, finalUser.hash)
-          
-        isHashed && reply.code(200).compress(finalUser)
+		typeof finalUser === "undefined" && reply.code(403).send("Email Incorreto/Não Cadastrado.")
+		const isHashed = await ft.bcrypt.compare(password, finalUser.hash)
+
+		isHashed && reply.code(200).compress(finalUser)
 	}
 })
 
 ft.route({
-	method: "POST",
-	url: "/login/teacher",
+	method: "GET",
+	url: "/teacher",
 	onRequest: ft.csrfProtection, 
-	handler: (request, reply) => {
-		return reply.send("teacher")
-	}
+	handler: (request, reply) => reply.code(200).compress(users)
 })
 
-ft.listen(process.env.PORT, "0.0.0.0")
+ft.listen(3000, "0.0.0.0")
