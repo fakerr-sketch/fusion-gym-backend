@@ -1,7 +1,7 @@
 "use-strict"
 
 const low = require("lowdb"),
-ft = require('fastify')(),
+ft = require('fastify')({logger: true}),
 http = require('http'),
 server = http.createServer(ft),
 { Server } = require("socket.io"),
