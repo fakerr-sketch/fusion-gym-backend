@@ -9,7 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "fastify": "^3.21.0",
     "fastify-bcrypt": "^0.1.1",
@@ -17,7 +16,7 @@
     "fastify-cookie": "^5.3.1",
     "fastify-csrf": "^3.1.0",
     "fastify-jwt": "^3.0.1",
-    "lowdb": "^3.0.0",
+    "lowdb": "^1.0.0",
     "redis": "^3.1.2",
     "socket.io": "^4.2.0"
   }

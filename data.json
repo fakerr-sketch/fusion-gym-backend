@@ -1,21 +1,15 @@
 {
   "users": [
     {
-      "name": "Felipe",
-      "email": "f@gmail.com",
-      "hash": "$2a$12$pxJyRn5F7cNOptivGTo5X.UxLPbkHugn0GuuyuphytIdKL2qUyfQq",
-      "type": "aluno"
-    },
-    {
-      "name": "Maria",
-      "email": "m@gmail.com",
-      "hash": "$2a$12$QepQLYXOhLwKzXI9enz1B.oShO4DbJ9whXoUaPXZrZLFQZTIKe7BG",
-      "type": "aluno"
-    },
-    {
       "name": "Walter",
       "email": "w@gmail.com",
-      "hash": "$2a$12$1SXZ.AEpfyGXI9Dso7h77O6ew4ucMCHChnIE9uqsrcpmFEYMBioBi",
+      "hash": "$2a$12$n1g/1QuaWCV3R4d6AdCu4uIm7/BdCS4NSUsfea4Se2bt18xR2SVA.",
+      "type": "aluno"
+    },
+    {
+      "name": "Felipe",
+      "email": "f@gmail.com",
+      "hash": "$2a$12$oB/jCNZa5NPszkyQ3nDuDOfDDucTOnYKdd3mx/8giopKsGRh.26we",
       "type": "aluno"
     }
   ]

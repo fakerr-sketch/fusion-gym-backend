@@ -1,42 +1,35 @@
 "use-strict"
 
-import fastify from 'fastify'
-import { Low, JSONFile } from 'lowdb' 
+const low = require("lowdb"),
+ft = require('fastify')(),
+http = require('http'),
+server = http.createServer(ft),
+{ Server } = require("socket.io"),
+io = new Server(server),
+FileSync = require('lowdb/adapters/FileSync'),
+adapter = new FileSync('data.json'),
+db = low(adapter)
 
-const jsonData = new JSONFile("./data.json")
-const db = new Low(jsonData)
-const ft = fastify()
+db.defaults({ users: [] }).write()
 
-await db.read()
-db.data = db.data || { users: [] }
-const {data: {users}} = db
+ft.register(require("fastify-cookie"))
+ft.register(require("fastify-csrf"))
 
-ft.register(await import("fastify-cookie"))
-ft.register(await import("fastify-csrf"))
-
-ft.register(await import("fastify-compress"), {global: true})
-ft.register(await import("fastify-bcrypt"), {saltWorkFactor: 12})
+ft.register(require("fastify-compress"), {global: true})
+ft.register(require("fastify-bcrypt"), {saltWorkFactor: 12})
 
 ft.route({
 	method: "POST",
 	url: "/signin",
 	onRequest: ft.csrfProtection,
-	onError: error => console.error(error),
 	handler: async (request, reply) => {
 
-		if (typeof request.body !== "null") {
-			const {name, email, password} = request.body,
-			hash = await ft.bcrypt.hash(password)
+		const {name, email, password} = request.body,
+		hash = await ft.bcrypt.hash(password)
 			
-			users.push({name, email, hash, type: "aluno"})
-			await db.write()
-			return reply.code(200)
-		}
+		db.get("users").push({name, email, hash, type: "aluno"}).write()
+		return reply.code(200)
 
-	},
-	errorHandler: (err, request, reply) => {
-		console.error(err)
-		return reply.code(500)
 	}
 })
 
@@ -45,6 +38,7 @@ ft.route({
 	url: "/login",
 	onRequest: ft.csrfProtection,
 	handler: async (request, reply) => {
+		const users = db.get("users").value()
 		const {body: {email, password}} = request
 		const finalUser = users.find(el => el.email === email)
 		typeof finalUser === "undefined" && reply.code(403).send("Email Incorreto/Não Cadastrado.")
@@ -58,7 +52,8 @@ ft.route({
 	method: "GET",
 	url: "/teacher",
 	onRequest: ft.csrfProtection, 
-	handler: (request, reply) => reply.code(200).compress(users)
+	handler: (request, reply) => reply.code(200).compress(db.get("users").value())
 })
 
 ft.listen(process.env.PORT, "0.0.0.0")
+// server.listen(3000, console.log('listening on *:3000'))
