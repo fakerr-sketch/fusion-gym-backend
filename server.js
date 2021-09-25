@@ -14,6 +14,7 @@ db.defaults({ users: [] }).write()
 
 ft.register(require("fastify-cookie"))
 ft.register(require("fastify-csrf"))
+ft.register(require("fastify-cors"), {origin: "*"})
 
 ft.register(require("fastify-compress"), {global: true})
 ft.register(require("fastify-bcrypt"), {saltWorkFactor: 12})

@@ -14,6 +14,7 @@
     "fastify-bcrypt": "^0.1.1",
     "fastify-compress": "^3.6.0",
     "fastify-cookie": "^5.3.1",
+    "fastify-cors": "^6.0.2",
     "fastify-csrf": "^3.1.0",
     "fastify-jwt": "^3.0.1",
     "lowdb": "^1.0.0",
