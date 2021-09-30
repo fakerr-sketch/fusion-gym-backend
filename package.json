@@ -1,0 +1,24 @@
+{
+  "name": "fusion_gym_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.21.0",
+    "fastify-bcrypt": "^0.1.1",
+    "fastify-compress": "^3.6.0",
+    "fastify-cookie": "^5.3.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-csrf": "^3.1.0",
+    "fastify-jwt": "^3.0.1",
+    "lowdb": "^1.0.0",
+    "redis": "^3.1.2",
+    "steno": "^0.4.4"
+  }
+}
