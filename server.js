@@ -56,9 +56,11 @@ ft.route({
 	handler: (request, reply) => {
         const { body: {name, id, trainning} } = request
         const user = db.get("users").filter({ name }).value()
-
-        db.set(`users[${id}].trainning`, trainning).value()
-        db.write()
+        Object.keys(trainning).forEach( (el, index) => {
+             const data = trainning[el].find(item => item !== null)
+             db.set(`users[${id}].trainning[${el}]`, data).value()
+             db.write()
+        })
 
         return reply.code(200)
 	}
