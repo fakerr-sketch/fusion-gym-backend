@@ -21,9 +21,9 @@ ft.route({
 	url: "/signin",
 	onRequest: ft.csrfProtection,
 	handler: async (request, reply) => {
-		const {name, email, password} = request.body,
+		const {name, email, password, token} = request.body,
 		hash = await ft.bcrypt.hash(password)
-		db.get("users").value().push({name, email, hash, trainning: {}})
+		db.get("users").value().push({name, email, hash, trainning: {}, token})
 		db.write()
 
 		return reply.code(200)
@@ -47,7 +47,7 @@ ft.route({
 	method: "GET",
 	url: "/teacher",
 	onRequest: ft.csrfProtection, 
-	handler: (request, reply) => reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning"]))
+	handler: (request, reply) => reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning", "token"]))
 })
 
 ft.route({
@@ -63,9 +63,9 @@ ft.route({
                 db.set("users[" + id +"].trainning[" + el + "]", trainning[el]).value()
                 db.write()
         	 }
-        	 return reply.code(403).send("form error")
+        	 return reply.code(403)
         })
-        return reply.code(200)
+        return reply.code(200).send({notificate: true})
 	}
 })
 

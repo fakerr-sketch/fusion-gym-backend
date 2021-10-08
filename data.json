@@ -1,35 +1,28 @@
 {
   "users": [
     {
-      "name": "Maria",
-      "email": "m@gmail.com",
-      "hash": "$2a$12$TGnKmxDGckw3I8ID94cVU.P8I9J46ADgVB34q/6tQ30NPBxVuMCMa"
-    },
-    {
-      "name": "Felipe",
-      "email": "f@gmail.com",
-      "hash": "$2a$12$tmnsballPi2cISFhO1brCehFY5tov/T0Uv027d7bVkyo85yiHHVbu",
-      "trainning": {
-        "A": [
-          "Felipe"
-        ],
-        "B": [
-          "Felipe"
-        ],
-        "C": [
-          "teste, teste1, teste2"
-        ]
-      }
-    },
-    {
       "name": "Walter",
       "email": "w@gmail.com",
       "hash": "$2a$12$GncFqdaqi/49xZ.3gH5zEeOIB9BTpKzPlvZhEOWBRdOSkfOMNKGRm",
       "trainning": {
         "A": [
-          "exemplo"
+          "teste"
         ]
       }
+    },
+    {
+      "name": "Felipe",
+      "email": "f@gmail.com",
+      "hash": "$2a$12$nEIAsM2VzmAwHOSUG058JOCwaEYpMlTfFvwZ4Wv5meQMfiNpuzUyC",
+      "trainning": {
+        "A": [
+          "teste"
+        ],
+        "B": [
+          "igigufufuf"
+        ]
+      },
+      "token": "ExponentPushToken[yJYsoQFo_sAcrbcTHUJD1y]"
     }
   ]
 }
