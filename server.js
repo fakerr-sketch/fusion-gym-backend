@@ -23,7 +23,8 @@ ft.route({
 	handler: async (request, reply) => {
 		const {name, email, password} = request.body,
 		hash = await ft.bcrypt.hash(password)
-		db.get("users").value().push({name, email, hash}).write()
+		db.get("users").value().push({name, email, hash, trainning: {}})
+		db.write()
 
 		return reply.code(200)
 	}
@@ -46,7 +47,7 @@ ft.route({
 	method: "GET",
 	url: "/teacher",
 	onRequest: ft.csrfProtection, 
-	handler: (request, reply) => reply.code(200).compress(db.get("users").value())
+	handler: (request, reply) => reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning"]))
 })
 
 ft.route({
@@ -56,14 +57,16 @@ ft.route({
 	handler: (request, reply) => {
         const { body: {name, id, trainning} } = request
         const user = db.get("users").filter({ name }).value()
-        Object.keys(trainning).forEach( (el, index) => {
-             const data = trainning[el].find(item => item !== null)
-             db.set(`users[${id}].trainning[${el}]`, data).value()
-             db.write()
+        Object.keys(trainning).forEach( el => {
+        	 const isntNull = trainning[el][0].length
+        	 if (isntNull > 0) {
+                db.set("users[" + id +"].trainning[" + el + "]", trainning[el]).value()
+                db.write()
+        	 }
+        	 return reply.code(403).send("form error")
         })
-
         return reply.code(200)
 	}
 })
 
-ft.listen(process.env.PORT, "0.0.0.0")
+ft.listen(process.env.PORT || 3000, "0.0.0.0")

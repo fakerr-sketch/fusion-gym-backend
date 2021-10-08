@@ -1,36 +1,33 @@
 {
   "users": [
     {
-      "name": "Walter",
-      "email": "w@gmail.com",
-      "hash": "$2a$12$n1g/1QuaWCV3R4d6AdCu4uIm7/BdCS4NSUsfea4Se2bt18xR2SVA.",
-      "type": "aluno",
-      "trainning": {
-        "A": [
-          "teste1, teste2, test3, teste 4"
-        ],
-        "B": [
-          ""
-        ],
-        "C": [
-          ""
-        ]
-      }
+      "name": "Maria",
+      "email": "m@gmail.com",
+      "hash": "$2a$12$TGnKmxDGckw3I8ID94cVU.P8I9J46ADgVB34q/6tQ30NPBxVuMCMa"
     },
     {
       "name": "Felipe",
       "email": "f@gmail.com",
-      "hash": "$2a$12$oB/jCNZa5NPszkyQ3nDuDOfDDucTOnYKdd3mx/8giopKsGRh.26we",
-      "type": "aluno",
+      "hash": "$2a$12$tmnsballPi2cISFhO1brCehFY5tov/T0Uv027d7bVkyo85yiHHVbu",
       "trainning": {
         "A": [
-          "Voador, Supino Plano Halteres, Crucifixo Inclinado, Elevação Lateral, Desenvolvimento Halteres,  Tríceps (Corda, Direto)"
+          "Felipe"
         ],
         "B": [
-          "Agachamento Corporal, Leg 180°, Extensora, Flexora em Pé, Adutora, Abdutora, Panturrilha Livre"
+          "Felipe"
         ],
         "C": [
-          ""
+          "teste, teste1, teste2"
+        ]
+      }
+    },
+    {
+      "name": "Walter",
+      "email": "w@gmail.com",
+      "hash": "$2a$12$GncFqdaqi/49xZ.3gH5zEeOIB9BTpKzPlvZhEOWBRdOSkfOMNKGRm",
+      "trainning": {
+        "A": [
+          "exemplo"
         ]
       }
     }
