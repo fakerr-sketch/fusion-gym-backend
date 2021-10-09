@@ -47,7 +47,10 @@ ft.route({
 	method: "GET",
 	url: "/teacher",
 	onRequest: ft.csrfProtection, 
-	handler: (request, reply) => reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning", "token"]))
+	handler: (request, reply) => {
+		db.read()
+		reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning", "token"]))
+	}
 })
 
 ft.route({
