@@ -49,7 +49,7 @@ ft.route({
 	onRequest: ft.csrfProtection, 
 	handler: (request, reply) => {
 		db.read()
-		reply.code(200).compress(JSON.stringify(db.get("users").value(), ["name", "trainning", "token"]))
+		reply.code(200).compress(db.get("users").value())
 	}
 })
 
@@ -66,7 +66,6 @@ ft.route({
                 db.set("users[" + id +"].trainning[" + el + "]", trainning[el]).value()
                 db.write()
         	 }
-        	 return reply.code(403)
         })
         return reply.code(200)
 	}
