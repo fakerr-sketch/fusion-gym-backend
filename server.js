@@ -65,7 +65,7 @@ ft.route({
         	 }
         	 return reply.code(403)
         })
-        return reply.code(200).send({notificate: true})
+        return reply.code(200)
 	}
 })
 
