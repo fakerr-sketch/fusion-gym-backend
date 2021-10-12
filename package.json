@@ -17,8 +17,8 @@
     "fastify-cors": "^6.0.2",
     "fastify-csrf": "^3.1.0",
     "fastify-jwt": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "lowdb": "^1.0.0",
-    "redis": "^3.1.2",
-    "steno": "^0.4.4"
+    "redis": "^3.1.2"
   }
 }
